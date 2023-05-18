@@ -832,17 +832,6 @@ main .left_bx1 .content .submit {
   cursor: pointer;
 }
 
-main .left_bx1 .content .check {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-main .left_bx1 .content .check span {
-  margin-left: 5px;
-  font-size: 13px;
-}
-
 main .left_bx1 .content p {
   margin-top: 90px;
   text-align: center;
