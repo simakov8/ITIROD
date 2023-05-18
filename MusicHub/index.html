@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Spotify</title>
+  </head>
+
+  <body>
+    <main>
+      <aside class="menu_side">
+        <h1>Playlist</h1>
+        <!-- <div class="playlist">
+          <h4 class="active">
+            <span></span><i class="bi bi-music-note-beamed"></i> Playlist
+          </h4>
+          <h4>
+            <span></span><i class="bi bi-music-note-beamed"></i> Last Listening
+          </h4>
+          <h4>
+            <span></span><i class="bi bi-music-note-beamed"></i> Recommended
+          </h4>
+        </div> -->
+        <ol class="menu_song">
+          
+        </ol>
+      </aside>
+
+      <div class="song_side">
+        <nav>
+          <!-- <ul>
+            <li>Discover <span></span></li>
+            <li>MY LIBRARY</li>
+            <li>RADIO</li>
+          </ul> -->
+          <div class="search">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="Search" />
+            <div class="search_results">
+              <!-- <a href="" class="card">
+                <img src="img/1.jpg" alt="">
+                <div class="content">
+                  On My Way
+                  <div class="subtitle">Alan Walker</div>
+                </div>
+              </a> -->
+            </div>
+          </div>
+          <div class="user">
+            <a href="login.html"><img src="img/1.jpg" alt="USER" title="user"/></a>
+          </div>
+        </nav>
+        <article class="content">
+          <h1 id="h1_name"></h1>
+          <p id="phrase">
+          </p>
+          <div class="buttons">
+            <a href="https://www.instagram.com/eminem" id="follow"><button id="follow_button" hidden>FOLLOW</button></a>
+          </div>
+        </article>
+        <div class="popular_song">
+          <div class="h1_container">
+            <h1>Popular Songs</h1>
+            <div class="btn_s">
+              <i id="pop_song_left" class="bi bi-arrow-left-short"></i>
+              <i id="pop_song_right" class="bi bi-arrow-right-short"></i>
+            </div>
+          </div>
+          <ul class="pop_song">
+            
+          </ul>
+        </div>
+        <div class="popular_artists">
+          <div class="h1_container">
+            <h1>Popular Artists</h1>
+            <div class="btn_s">
+              <i id="pop_art_left" class="bi bi-arrow-left-short"></i>
+              <i id="pop_art_right" class="bi bi-arrow-right-short"></i>
+            </div>
+          </div>
+          <ul class="artist_item">
+            <li class="art">
+              <img src="img/1.jpg" alt="Eminem" title="Eminem"/>
+            </li>
+            <li class="art">
+              <img src="img/4.jpg" alt="50 Cent" title="50 Cent"/>
+            </li>
+            <li class="art">
+              <img src="img/7.jpg" alt="Wiz Khalifa" title="Wiz Khalifa"/>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="master_play">
+        <div class="wave">
+          <div class="wave1"></div>
+          <div class="wave1"></div>
+          <div class="wave1"></div>
+        </div>
+        <img src="img/em.jpg" alt="" id="poster_master_play" />
+        <h1 id="title">
+          
+        </h1>
+        <div class="icon">
+          <i class="bi shuffle bi-music-note-beamed">next</i>
+          <i class="bi bi-skip-start-fill" id="back"></i>
+          <i class="bi bi-play-fill" id="masterPlay"></i>
+          <i class="bi bi-skip-end-fill" id="next"></i>
+          <a href download id="download_music">
+            <i class="bi bi-cloud-arrow-down-fill"></i>
+          </a>
+        </div>
+        <span id="currentStart">0:00</span>
+        <div class="bar">
+          <input type="range" id="seek" min="0" value="0" max="100" />
+          <div class="bar2" id="bar2"></div>
+          <div class="dot"></div>
+        </div>
+        <span id="currentEnd">0:00</span>
+
+        <div class="vol">
+          <i class="bi bi-volume-down-fill" id="vol_icon"></i>
+          <input type="range" id="vol" min="0" value="100" max="100" />
+          <div class="vol_bar"></div>
+          <div class="dot" id="vol_dot"></div>
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
