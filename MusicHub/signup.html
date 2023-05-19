@@ -1,68 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Spotify Sign Up</title>
-  </head>
-  <body>
-    <main>
-      <div class="left_bx1">
-        <div class="content">
-          <form method="post" id="sign_up-form">
-            <h3>Sign Up</h3>
-            <div class="card">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                name="user_name"
-                id="user_name"
-                placeholder="Enter Your Username..."
-                required
-              />
-            </div>
-            <div class="card">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                name="user_email"
-                id="user_email"
-                placeholder="Enter Your Email..."
-                required
-              />
-            </div>
-            <div class="card">
-              <label for="password">Password</label>
-              <input
-                type="password"
-                name="user_password"
-                id="user_password"
-                placeholder="Enter Your Password..."
-                required
-              />
-            </div>
-            <input
-              type="submit"
-              value="Sign Up"
-              class="submit"
-              id="sign_up_submit"
-            />
-            <!-- <div class="check">
-                        <input type="checkbox" name="" id=""><span>Remember Me</span>
-                    </div> -->
-            <p>You have an account? <a href="login.html">Login</a></p>
-          </form>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Spotify Sign Up</title>
+</head>
+
+<body>
+  <main>
+    <div class="left_bx1">
+      <div class="content">
+        <div id="sign_up-form">
+          <h3>Sign Up</h3>
+          <div class="card">
+            <label for="name">Name</label>
+            <input type="text" id="user_name" placeholder="Enter Your Username..." required />
+          </div>
+          <div class="card">
+            <label for="email">Email</label>
+            <input type="email" id="user_email" placeholder="Enter Your Email..." required />
+          </div>
+          <div class="card">
+            <label for="password">Password</label>
+            <input type="password" id="user_password" placeholder="Enter Your Password..." required />
+          </div>
+          <input type="submit" value="Sign Up" class="submit" id="sign_up_submit" />
+          <p>You have an account? <a href="login.html">Login</a></p>
         </div>
       </div>
-      <div class="right_bx1">
-        <img src="img/1.jpg" alt="" />
-      </div>
-    </main>
-  </body>
-  <script src="signup.js"></script>
+    </div>
+    <div class="right_bx1">
+      <img src="img/1.jpg" alt="" />
+    </div>
+  </main>
+</body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+  } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+  import {
+    getDatabase,
+    set,
+    ref,
+  } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCAc0N0ArnZ5ugMUT4Zbq_VfHaJWzgMkm8",
+    authDomain: "music-hub-d33a2.firebaseapp.com",
+    projectId: "music-hub-d33a2",
+    storageBucket: "music-hub-d33a2.appspot.com",
+    messagingSenderId: "708159979362",
+    appId: "1:708159979362:web:267a6197fa1635cb0d763b"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  console.log(app);
+  const auth = getAuth(app);
+  console.log(auth);
+  const database = getDatabase(app);
+  console.log(database);
+
+  const but = document.getElementById("sign_up_submit");
+
+  but.addEventListener("click", (e) => {
+    let email = document.getElementById("user_email").value;
+    let username = document.getElementById("user_name").value;
+    let password = document.getElementById("user_password").value;
+
+    console.log(email, username, password);
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        set(ref(database, "users/" + user.uid), {
+          username: username,
+          email: email,
+        });
+        alert("user created!");
+        setTimeout(function () {
+          window.location.href = "login.html";
+        }, 1 * 1000);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(errorMessage);
+      });
+  });
+</script>
+
+<!-- <script src="signup.js"></script> -->
+
 </html>
