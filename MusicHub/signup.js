@@ -2,12 +2,12 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
 import {
     getAuth,
-    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
 import {
     getDatabase,
+    set,
     ref,
-    update,
 } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -30,36 +30,32 @@ console.log(auth);
 const database = getDatabase(app);
 console.log(database);
 
-const but = document.getElementById("login_form_submit");
+const but = document.getElementById("sign_up_submit");
 
 but.addEventListener("click", (e) => {
     let email = document.getElementById("user_email").value;
+    let username = document.getElementById("user_name").value;
     let password = document.getElementById("user_password").value;
-    const loginErrorMsg = document.getElementById("incorrect_h3");
 
-    console.log(email, password);
+    console.log(email, username, password);
 
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
 
-            const dt = new Date();
-            update(ref(database, "users/" + user.uid), {
-                last_login: dt,
+            set(ref(database, "users/" + user.uid), {
+                username: username,
+                email: email,
             });
-
-            alert("User loged in!");
-
+            alert("user created!");
             setTimeout(function () {
-                window.location.href = "index.html";
-            }, 2 * 1000);
-
+                window.location.href = "login.html";
+            }, 1 * 1000);
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
 
             alert(errorMessage);
-            loginErrorMsg.style.visibility = "visible";
         });
 });
