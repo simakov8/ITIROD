@@ -1,6 +1,6 @@
-import { songs_array } from "./songs.js";
-import { singers_array } from "./singers.js";
-import { makeAllPlays, makeAllBackgrounds } from "./work_with_all_songs.js";
+import { songs_array } from "/js/songs.js";
+import { singers_array } from "/js/singers.js";
+import { makeAllPlays, makeAllBackgrounds } from "/js/work_with_all_songs.js";
 
 const music = new Audio("music/1.mp3");
 

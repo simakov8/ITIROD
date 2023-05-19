@@ -1,3 +1,5 @@
+import { validate_email, validate_field, validate_password } from "/js/validators.js";
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
 import {
@@ -38,6 +40,18 @@ but.addEventListener("click", (e) => {
     let password = document.getElementById("user_password").value;
 
     console.log(email, username, password);
+
+    if (validate_field(username) == false) {
+        alert('Username is not correct')
+    }
+
+    if (validate_email(email) == false) {
+        alert('Email is not correct')
+    }
+
+    if (validate_password(password) == false) {
+        alert('Password is not correct')
+    }
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {

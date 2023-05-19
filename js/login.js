@@ -1,3 +1,5 @@
+import { validate_email, validate_password } from "/js/validators.js";
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
 import {
@@ -38,6 +40,14 @@ but.addEventListener("click", (e) => {
     const loginErrorMsg = document.getElementById("incorrect_h3");
 
     console.log(email, password);
+
+    if (validate_email(email) == false) {
+        alert('Email is not correct')
+    }
+
+    if (validate_password(password) == false) {
+        alert('Password is not correct')
+    }
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
