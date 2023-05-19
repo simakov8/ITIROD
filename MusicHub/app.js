@@ -1,95 +1,16 @@
+import { songs_array } from "./songs.js";
+import { singers_array } from "./singers.js";
+import { makeAllPlays, makeAllBackgrounds } from "./work_with_all_songs.js";
+
 const music = new Audio("music/1.mp3");
 
 // create Array(singers)
 
-const singers = [
-  {
-    name: "Eminem",
-    description: "I Tell myself that I'm doing alright",
-    photo: "url('img/em.jpg')",
-    inst: "https://www.instagram.com/eminem",
-  },
-  {
-    name: "50 Cent",
-    description: "You can find me in the club, bottle full of bub",
-    photo: "url('img/fift.jpg')",
-    inst: "https://www.instagram.com/50cent",
-  },
-  {
-    name: "Wiz Khalifa",
-    description: "See You Again",
-    photo: "url('img/wiz.jpg')",
-    inst: "https://www.instagram.com/wizkhalifa",
-  },
-];
+let singers = singers_array
 
 // create Array(songs)
 
-let songs = [
-  {
-    id: "1",
-    songName: `Lose Yourself<br>
-        <div class="subtitle">Eminem</div>`,
-    poster: "img/1.jpg",
-    download: "Eminem - Lose Yourself",
-  },
-  {
-    id: "2",
-    songName: `As Like That <br>
-        <div class="subtitle">Eminem</div>`,
-    poster: "img/2.jpg",
-    download: "Eminem - As Like That"
-  },
-  {
-    id: "3",
-    songName: `Mockingbird <br>
-        <div class="subtitle">Eminem</div>`,
-    poster: "img/3.jpg",
-    download: "Eminem - Mockingbird",
-  },
-  {
-    id: "4",
-    songName: `A Little Bit <br>
-        <div class="subtitle">50 Cent</div>`,
-    poster: "img/4.jpg",
-    download: "50 Cent - A Little Bit"
-  },
-  {
-    id: "5",
-    songName: `Candy Shop <br>
-        <div class="subtitle">50 Cent</div>`,
-    poster: "img/5.jpg",
-    download: "50 Cent - Candy Shop"
-  },
-  {
-    id: "6",
-    songName: `In Da Club <br>
-        <div class="subtitle">50 Cent</div>`,
-    poster: "img/6.jpg",
-    download: "50 Cent - In Da Club"
-  },
-  {
-    id: "7",
-    songName: `See You Again <br>
-        <div class="subtitle">Wiz Khalifa</div>`,
-    poster: "img/7.jpg",
-    download: "Wiz Khalifa - See You Again"
-  },
-  {
-    id: "8",
-    songName: `Black And Yellow <br>
-        <div class="subtitle">Wiz Khalifa</div>`,
-    poster: "img/8.jpg",
-    download: "Wiz Khalifa - Black And Yellow"
-  },
-  {
-    id: "9",
-    songName: `We Own It <br>
-        <div class="subtitle">Wiz Khalifa</div>`,
-    poster: "img/9.jpg",
-    download: "Wiz Khalifa - We Own It"
-  },
-];
+let songs = songs_array;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -139,17 +60,18 @@ songs.forEach((element) => {
 
 // work with singers
 
-follow = document.getElementById("follow");
-follow_button = document.getElementById("follow_button");
-name_h1 = document.getElementById("h1_name");
-phrase = document.getElementById("phrase");
+let follow = document.getElementById("follow");
+let follow_button = document.getElementById("follow_button");
+let name_h1 = document.getElementById("h1_name");
+let phrase = document.getElementById("phrase");
 
-content = document.querySelector('article');
+let content = document.querySelector('article');
 
 Array.from(document.getElementsByClassName("artist_item")).forEach(
   (element) => {
     element.addEventListener("click", (e) => {
-      name_art = e.target.title;
+      let name_art = e.target.title;
+      let singer;
       switch (name_art) {
         case "Eminem":
           singer = singers.find(item => item.name == name_art);
@@ -246,21 +168,6 @@ masterPlay.addEventListener("click", () => {
     wave.classList.remove("active2");
   }
 });
-
-const makeAllPlays = () => {
-  Array.from(document.getElementsByClassName("playListPlay")).forEach(
-    (element) => {
-      element.classList.add("bi-play-circle-fill");
-      element.classList.remove("bi-pause-circle-fill");
-    }
-  );
-};
-
-const makeAllBackgrounds = () => {
-  Array.from(document.getElementsByClassName("songItem")).forEach((element) => {
-    element.style.background = "rgb(105, 105, 170, 0)";
-  });
-};
 
 let index = 0;
 let poster_master_play = document.getElementById("poster_master_play");
@@ -379,7 +286,6 @@ let back = document.getElementById("back");
 let next = document.getElementById("next");
 
 back.addEventListener("click", () => {
-  console.log("asd")
   index -= 1;
   if (index < 1) {
     index = Array.from(document.getElementsByClassName("songItem")).length;
@@ -405,7 +311,7 @@ back.addEventListener("click", () => {
   ].style.background = "rgb(105, 105, 170, .1)";
   makeAllPlays();
 
-  e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
+  let e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
     `${index - 1}`  
   ]
 
@@ -417,7 +323,6 @@ back.addEventListener("click", () => {
 
 next.addEventListener("click", () => {
   index++;
-  console.log("asd")
   if (index > Array.from(document.getElementsByClassName("songItem")).length) {
     index = 1;
   }
@@ -442,7 +347,7 @@ next.addEventListener("click", () => {
   ].style.background = "rgb(105, 105, 170, .1)";
   makeAllPlays();
 
-  e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
+  let e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
     `${index - 1}`  
   ]
 
@@ -539,7 +444,7 @@ const next_music = () => {
   ].style.background = "rgb(105, 105, 170, .1)";
   makeAllPlays();
 
-  e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
+  let e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
     `${index - 1}`  
   ]
 
@@ -572,7 +477,7 @@ const repeat_music = () => {
   ].style.background = "rgb(105, 105, 170, .1)";
   makeAllPlays();
 
-  e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
+  let e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
     `${index - 1}`  
   ]
 
@@ -609,7 +514,7 @@ const random_music = () => {
   ].style.background = "rgb(105, 105, 170, .1)";
   makeAllPlays();
 
-  e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
+  let e = Array.from(document.getElementsByClassName("bi playListPlay bi-play-circle-fill"))[
     `${index - 1}`  
   ]
 
