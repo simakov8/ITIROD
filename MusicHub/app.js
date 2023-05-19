@@ -25,9 +25,9 @@ songs.forEach((element) => {
   list_item.innerHTML = `
     <span>0${element.id}</span>
     <img src=${element.poster} alt="" />
-    <h1>
+    <h2>
       ${element.songName}
-    </h1>
+    </h2>
     <i class="bi playListPlay bi-play-circle-fill" id=${element.id}></i>
   `
   
@@ -46,9 +46,9 @@ songs.forEach((element) => {
       <img src=${element.poster} alt="" />
       <i class="bi playListPlay bi-play-circle-fill" id=${element.id}></i>
     </div>
-    <h1>
+    <h2>
       ${element.songName}
-    </h1>
+    </h2>
   `
 
   if(element.id > 6) {
