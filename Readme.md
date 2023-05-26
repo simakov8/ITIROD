@@ -1,7 +1,7 @@
 MusicHub project. 
 
 You can try in at:
-    https://simakov8.github.io/ITIROD/
+    https://simakov8.github.io
 
 
 This project provedes following functions:
