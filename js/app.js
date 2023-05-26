@@ -72,34 +72,13 @@ Array.from(document.getElementsByClassName("artist_item")).forEach(
     element.addEventListener("click", (e) => {
       let name_art = e.target.title;
       let singer;
-      switch (name_art) {
-        case "Eminem":
-          singer = singers.find(item => item.name == name_art);
-          content.style.background = singer.photo;
-          follow.href = singer.inst;
-          follow_button.removeAttribute("hidden");
-          name_h1.innerHTML = `${singer.name}`;
-          phrase.innerHTML = `${singer.description}`;
-          break;
-    
-        case "50 Cent":
-          singer = singers.find(item => item.name == name_art);
-          content.style.background = singer.photo;
-          follow.href = singer.inst;
-          follow_button.removeAttribute("hidden");
-          name_h1.innerHTML = `${singer.name}`;
-          phrase.innerHTML = `${singer.description}`;
-          break;
-          
-        case "Wiz Khalifa":
-          singer = singers.find(item => item.name == name_art);
-          content.style.background = singer.photo;
-          follow.href = singer.inst;
-          follow_button.removeAttribute("hidden");
-          name_h1.innerHTML = `${singer.name}`;
-          phrase.innerHTML = `${singer.description}`;
-          break;          
-      }
+        singer = singers.find(item => item.name == name_art);
+        content.style.background = singer.photo;
+        content.style.backgroundSize = "cover";
+        follow.href = singer.inst;
+        follow_button.removeAttribute("hidden");
+        name_h1.innerHTML = `${singer.name}`;
+        phrase.innerHTML = `${singer.description}`;
     });
   }
 );
