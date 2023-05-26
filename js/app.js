@@ -171,7 +171,7 @@ Array.from(document.getElementsByClassName("playListPlay")).forEach(
       song_title.forEach((ele) => {
         let { download, songName } = ele;
         title.innerHTML = songName;
-        download_music.setAttribute("download", download);
+        download_music.setAttribute("download", `${download_music.href}`);
       });
 
       makeAllBackgrounds();
